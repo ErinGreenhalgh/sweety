@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Reading, type: :model do
   it { should validate_presence_of :glucose_level }
+  it { should validate_numericality_of(:glucose_level).only_integer }
 
   scenario "can have no more than 4 entries per day" do
     4.times do
