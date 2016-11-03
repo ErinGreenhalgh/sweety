@@ -1,6 +1,7 @@
 class Reading < ApplicationRecord
   validate :reading_within_daily_limit, on: :create
   validates :glucose_level, presence: :true
+  validates :glucose_level, numericality: { only_integer: true }
 
   private
 

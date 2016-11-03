@@ -1,0 +1,8 @@
+<h1>Welcome to Sweety!</h1>
+<%= render partial: "flash" %>
+
+<h3>Enter a reading:</h3>
+<%= form_for @reading do |f| %>
+  <%= f.text_field :glucose_level, placeholder: "mg/dl"%>
+  <%= f.submit "Submit"%>
+<% end  %>
