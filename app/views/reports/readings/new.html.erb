@@ -1,0 +1,29 @@
+<h1>Run a Report</h1>
+<div class="report-selection">
+  <h2>1. Select Type of Report:</h2>
+  <%= form_tag(reports_results_path, method: 'post') do  %>
+    <div class="report-types">
+      <%= radio_button_tag "report_type[]", "daily" %>
+      <%= label_tag("daily") %>
+      <%= radio_button_tag "report_type[]", "month-to-date" %>
+      <%= label_tag("month to date") %>
+      <%= radio_button_tag "report_type[]", "monthly" %>
+      <%= label_tag("monthly") %>
+    </div>
+
+    <div class="date-selection" id="select-date">
+      <h2>2. Select a Date:</h2>
+      <%= select_tag "date", options_for_select(@dates_with_readings.map { |date| [ format_date(date), date] }) %>
+    </div>
+
+    <div class="date-selection" id="select-month">
+      <h2>2. Select a Month:</h2>
+      <%= select_tag "month", options_for_select(@months_with_readings.map { |month| [ month, month] }) %>
+    </div>
+
+    <div class="submit-selection">
+      <%= submit_tag("View Report", id: "submit") %>
+    </div>
+
+  <% end %>
+</div>

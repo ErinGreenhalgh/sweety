@@ -1,0 +1,6 @@
+<h1><%= @report_type.first.capitalize %> Report Results for <%= @date %></h1>
+<div class="report-data">
+  <p id="max">Maximum: <%= @data[:maximum] %> mg/dl</p>
+  <p id="min">Minimum: <%= @data[:minimum] %> mg/dl</p>
+  <p id="avg">Average: <%= @data[:average] %> mg/dl</p>
+</div>
