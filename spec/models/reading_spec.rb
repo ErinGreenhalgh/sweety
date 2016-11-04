@@ -30,13 +30,26 @@ RSpec.describe Reading, type: :model do
   end
 
 
-  # scenario "gives all the readings for the month to the given date" do
-  # end
-  #
-  # scenario "gives all the readings for a given month and year" do
-  #   reading_last_month = create(:reading, created_at: DateTime.now.last_month)
-  #   readings_this_month = create_list(:reading, 3)
-  #   expect(Reading.monthly())
-  #
-  # end
+  scenario "gives all the readings for the month to the given date" do
+    date = DateTime.parse("02-11-2016")
+    other_reading = create(:reading, created_at: (date - 3.days) )
+    reading1 = create(:reading, created_at: date.yesterday)
+    reading2 = create(:reading, created_at: date)
+    reading3 = create(:reading, created_at: date.tomorrow)
+    selected_date = date + 2.days
+
+    result = Reading.month_to_date(selected_date)
+    expect(result).to eq [reading1, reading2, reading3]
+    expect(result).not_to include(other_reading)
+  end
+
+  scenario "gives all the readings for a given month" do
+    selected_date = DateTime.parse("02-11-2016")
+    october_readings = create_list(:reading, 3, created_at: selected_date.last_month)
+    november_readings = create_list(:reading, 3, created_at: selected_date)
+    october = DateTime.parse("October 2016")
+
+    result = Reading.for_month(october)
+    expect(result).to eq october_readings
+  end
 end
