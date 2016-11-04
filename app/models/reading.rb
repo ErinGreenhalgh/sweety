@@ -19,6 +19,10 @@ class Reading < ApplicationRecord
     where(created_at: (date.beginning_of_month..date.end_of_day))
   end
 
+  def self.for_month(date = Time.zone.now)
+    where(created_at: (date.beginning_of_month..date.end_of_month))
+  end
+
   def self.report_data(readings)
     glucose_levels = readings.pluck(:glucose_level)
     average = (glucose_levels.reduce(:+)/glucose_levels.count.to_f).round(1)
@@ -30,7 +34,4 @@ class Reading < ApplicationRecord
     report_data(Reading.for_day(formatted_date))
   end
 
-  # def self.for_month(date)
-  #   where("extract (month from created_at) = ? AND extract(year from created_at) = ?", date.month, date.year)
-  # end
 end
