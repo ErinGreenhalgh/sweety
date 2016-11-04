@@ -6,6 +6,8 @@ $(document).ready(function(){
   showDateOptions("#report_type__daily");
   showDateOptions("#report_type__month-to-date");
   showMonthOptions("#report_type__monthly");
+  showSubmitButton("#date");
+  showSubmitButton("#month");
 })
 
 function showDateOptions(checkBoxId){
@@ -22,5 +24,8 @@ function showMonthOptions(checkBoxId){
   })
 }
 
-//only show the submit selection button once they have made
-// a selection
+function showSubmitButton(dropdownId){
+  $(dropdownId).on("click", function(){
+    $(".submit-selection").show()
+  })
+}
