@@ -1,0 +1,12 @@
+<h1>Run a Report</h1>
+<div class="report-types">
+  <h2>1. Select Type of Report:</h2>
+  <%= form_tag do  %>
+    <%= check_box_tag "daily" %>
+    <%= label_tag("daily") %>
+    <%= check_box_tag "month-to-date" %>
+    <%= label_tag("month to date") %>
+    <%= check_box_tag "monthly" %>
+    <%= label_tag("monthly") %>
+  <% end %>
+</div>
