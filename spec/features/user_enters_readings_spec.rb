@@ -21,7 +21,7 @@ RSpec.feature "user enters readings" do
       visit root_path
       fill_in "reading[glucose_level]", with: 10
       click_button "Submit"
-      within("#flash_error") do
+      within("#flash_danger") do
         expect(page).to have_content "Reading cannot be entered more than 4 times per day"
       end
     end
@@ -32,7 +32,7 @@ RSpec.feature "user enters readings" do
       click_button "Submit"
 
       error_message = "Glucose level must be an integer"
-      within("#flash_error") do
+      within("#flash_danger") do
         expect(page).to have_content error_message
       end
     end
@@ -43,7 +43,7 @@ RSpec.feature "user enters readings" do
       click_button "Submit"
 
       error_message = "Glucose level is not a number"
-      within("#flash_error") do
+      within("#flash_danger") do
         expect(page).to have_content error_message
       end
     end
