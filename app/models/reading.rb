@@ -29,9 +29,30 @@ class Reading < ApplicationRecord
     {minimum: glucose_levels.min, maximum: glucose_levels.max, average: average}
   end
 
+  def self.format_date(date_string)
+    DateTime.parse(date_string)
+  end
+
   def self.report_for_day(date = Time.zone.now)
-    formatted_date = DateTime.parse(date)
+    formatted_date = format_date(date)
     report_data(Reading.for_day(formatted_date))
   end
 
+  def self.report_for_month_to_date(date)
+    report_data(Reading.month_to_date(format_date(date)))
+  end
+
+  def self.report_for_month(date)
+    report_data(Reading.for_month(format_date(date)))
+  end
+
+  def self.available_dates
+    pluck("DATE(created_at)").uniq
+  end
+
+  def self.available_months
+    available_dates.map do |date|
+      date.strftime("%B %Y")
+    end.uniq
+  end
 end

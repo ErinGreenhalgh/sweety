@@ -1,6 +1,7 @@
 class Reports::ReadingsController < ApplicationController
   def new
-    @dates_with_readings = Reading.pluck("DATE(created_at)").uniq
+    @dates_with_readings = Reading.available_dates
+    @months_with_readings = Reading.available_months
   end
 
   def results

@@ -18,7 +18,7 @@
 
     <div class="date-selection" id="select-month">
       <h2>2. Select a Month:</h2>
-      <%= select_tag "month", options_for_select(@months_with_readings.map { |date| [ date, date] }) %>
+      <%= select_tag "month", options_for_select(@months_with_readings.map { |month| [ month, month] }) %>
     </div>
 
     <div class="submit-selection">
