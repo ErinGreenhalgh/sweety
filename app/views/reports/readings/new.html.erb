@@ -1,12 +1,24 @@
 <h1>Run a Report</h1>
-<div class="report-types">
+<div class="report-selection">
   <h2>1. Select Type of Report:</h2>
-  <%= form_tag do  %>
-    <%= check_box_tag "daily" %>
-    <%= label_tag("daily") %>
-    <%= check_box_tag "month-to-date" %>
-    <%= label_tag("month to date") %>
-    <%= check_box_tag "monthly" %>
-    <%= label_tag("monthly") %>
+  <%= form_tag(reports_results_path, method: 'post') do  %>
+    <div class="report-types">
+      <%= check_box_tag "report_type[]", "daily" %>
+      <%= label_tag("daily") %>
+      <%= check_box_tag "report_type[]", "month-to-date" %>
+      <%= label_tag("month to date") %>
+      <%= check_box_tag "report_type[]", "monthly" %>
+      <%= label_tag("monthly") %>
+    </div>
+
+    <div class="date-selection">
+      <h2>2. Select a Date:</h2>
+      <%= select_tag "date", options_for_select(@dates_with_readings.map { |date| [ date, date] }) %>
+    </div>
+
+    <div class="submit-selection">
+      <%= submit_tag("View Report") %>
+    </div>
+
   <% end %>
 </div>
