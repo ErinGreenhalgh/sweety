@@ -11,18 +11,18 @@
       <%= label_tag("monthly") %>
     </div>
 
-    <div id="select-date">
+    <div class="date-selection" id="select-date">
       <h2>2. Select a Date:</h2>
-      <%= select_tag "date", options_for_select(@dates_with_readings.map { |date| [ date, date] }) %>
+      <%= select_tag "date", options_for_select(@dates_with_readings.map { |date| [ format_date(date), date] }) %>
     </div>
 
-    <div id="select-month">
+    <div class="date-selection" id="select-month">
       <h2>2. Select a Month:</h2>
-      <%= select_tag "month", options_for_select(@dates_with_readings.map { |date| [ date, date] }) %>
+      <%= select_tag "month", options_for_select(@months_with_readings.map { |date| [ date, date] }) %>
     </div>
 
     <div class="submit-selection">
-      <%= submit_tag("View Report") %>
+      <%= submit_tag("View Report", id: "submit") %>
     </div>
 
   <% end %>
