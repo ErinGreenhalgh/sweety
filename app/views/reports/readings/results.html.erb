@@ -1,6 +1,6 @@
 <%= render partial: "shared/navbar" %>
 <% if @report_type == ["monthly"] %>
-  <h1><%= @report_type.first.capitalize %> Report Results for <%= format_as_month(@date) %></h1>
+  <h1><%= @report_type.first.capitalize %> Report Results for <%= format_as_month(@month) %></h1>
 <% else %>
   <h1><%= @report_type.first.capitalize %> Report Results for <%= format_date(@date) %></h1>
 <% end %>
