@@ -8,7 +8,7 @@ class ReadingsController < ApplicationController
     if @reading.save
       flash[:success] = "Reading of #{@reading.glucose_level} mg/dl successfully submitted"
     else
-      flash[:error] = @reading.errors.full_messages.join(" ")
+      flash[:danger] = @reading.errors.full_messages.join(", and ")
     end
     redirect_to root_path
   end
