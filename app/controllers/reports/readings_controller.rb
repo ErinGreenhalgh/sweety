@@ -9,13 +9,10 @@ class Reports::ReadingsController < ApplicationController
     @date = params[:date]
     if @report_type == ["daily"]
       @data = Reading.report_for_day(@date)
-    end
-    if @report_type == ["month-to-date"]
+    elsif @report_type == ["month-to-date"]
       @data = Reading.report_for_month_to_date(@date)
-    end
-    if @report_type == ["monthly"]
+    elsif @report_type == ["monthly"]
       @data = Reading.report_for_month(@date)
     end
   end
-
 end
